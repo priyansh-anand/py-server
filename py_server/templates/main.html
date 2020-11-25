@@ -1,0 +1,113 @@
+<html>
+
+	<head>
+		<title>{{ dir_path }}</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename = 'styles/main.css') }}">
+		<link id="view0" rel="stylesheet" href="{{ url_for('static', filename = 'styles/view0.css') }}">
+		<link id="view1" rel="stylesheet" href="{{ url_for('static', filename = 'styles/view1.css') }}">
+	</head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+
+	<body>
+		<div class="head view1">
+			<div>
+				Name
+			</div>
+			<div id="last">
+				Size
+			</div>
+		</div>
+
+		<div class="content">
+			{% if dir_path != '/' %}
+			<div class="file" onclick="location.href+='../'">
+				<img src="{{ url_for('static', filename = 'icons/folder-back.svg') }}">
+				<div>
+					..
+				</div>
+			</div>
+			{% endif %}
+
+			{% for dir, dir_link, is_sym, dir_size in dirs %}
+			<div class="file" onclick="location.href+='{{ dir_link }}'">
+				{% if is_sym %}
+				<img src="{{ url_for('static', filename = 'icons/folder-sym.svg') }}">
+				{% else %}
+				<img src="{{ url_for('static', filename = 'icons/folder.svg') }}">
+				{% endif %}
+				<div>
+					{{ dir }}
+				</div>
+				<div id="last" class="view1">
+					{{ dir_size }}
+					{% if dir_size == '1' %}
+					item
+					{% else %}
+					items
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+
+			{% for file, file_link, is_sym, image, file_size in files %}
+			<div class="file" onclick="location.href+='{{ file_link }}'">
+				{% if is_sym %}
+				<img src="{{ url_for('static', filename = 'icons/' + image) }}">
+				{% else %}
+				<img src="{{ url_for('static', filename = 'icons/' + image) }}">
+				{% endif %}
+				<div>
+					{{ file }}
+				</div>
+
+				<div id="last" class="view1">
+					{{ file_size }}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="toolbar">
+			<div onclick="show_pop('cf')">
+				<img src="{{ url_for('static', filename = 'icons/folder-add.svg') }}">
+				Create Folder
+			</div>
+			<div onclick="show_pop('uf')">
+				<img src="{{ url_for('static', filename = 'icons/file-upload.svg') }}">
+				Upload File
+			</div>
+			<div onclick="change_view()">
+				<img src="{{ url_for('static', filename = 'icons/toggle.svg') }}">
+				Toggle View
+			</div>
+		</div>
+		<div id="cf" class="popup">
+			<div>
+				Create Folder
+			</div>
+			<form action="/mkdir" method="POST" onsubmit="return submit_form(this, 'cf')">
+				<input name="folder" type="text" placeholder="Folder name" id="name">
+				<input id="submit" type="submit" value="Create">
+				<input name="red" value="{{ dir_path }}" hidden>
+			</form>
+			<div name="cancel" id="cancel" onclick="close_pop('cf')">
+				<img src="{{ url_for('static', filename = 'icons/cancel.svg') }}">
+			</div>
+		</div>
+		<div id="uf" class="popup">
+			<div>
+				Upload files
+			</div>
+			<form action="/upload" method="POST" enctype="multipart/form-data" onsubmit="return submit_form(this, 'uf', 'upload')">
+				<button id="cf_vb" type="button" onclick="click_button(this, 'cf_inp')" class="invisible">Choose file</button>
+				<input id="cf_inp" type="file" name="file" hidden>
+				<input name="red" value="{{ dir_path }}" hidden>
+				<input id="submit" name="upload" type="submit" value="Upload">
+			</form>
+			<div name="cancel" id="cancel" value="cancel" onclick="close_pop('uf')">
+				<img src="{{ url_for('static', filename = 'icons/cancel.svg') }}">
+			</div>
+		</div>
+	</body>
+
+</html>

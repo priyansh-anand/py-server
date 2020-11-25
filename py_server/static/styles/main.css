@@ -1,0 +1,207 @@
+@font-face {
+	font-style: normal;
+	font-weight: normal;
+	font-family: 'IBMPlexSans';
+	src: url("/static/IBMPlexSans-Regular.ttf");
+}
+
+* {
+	user-select: none;
+	scrollbar-width: thin;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+	tap-highlight-color:transparent;
+	-o-tap-highlight-color:transparent;
+	-moz-tap-highlight-color:transparent;
+	-webkit-tap-highlight-color:transparent;
+	scrollbar-color: #ffffff20 #232027;
+}
+
+*::-webkit-scrollbar {
+	width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #232027;
+}
+*::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	border: 3px solid #232027;
+	background-color: #ffffff20;
+}
+
+*:focus {
+	outline: none;
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+	font-family: 'IBMPlexSans';
+	background-color: #26262c;
+}
+
+@media (hover: hover) {
+	.file:hover {
+		background-color: #ffffff08;
+		transition: background-color 0.5s;
+	}
+}
+
+.file:active {
+	background-color: #ffffff15;
+	transition: background-color 0.2s;
+}
+
+.file > * {
+	max-width: 100%;
+	pointer-events: none;
+	cursor: pointer !important;
+}
+
+.toolbar {
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	font-size: 12px;
+	color: #74A6AD;
+	position: absolute;
+	flex-direction: row;
+	background-color: #00000030;
+}
+
+.toolbar > div {
+	flex: 1;
+	display: flex;
+	height: 4.5rem;
+	cursor: pointer;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	transition: background-color 0.3s;
+}
+
+@media (hover: hover) {
+	.toolbar > div:hover {
+		background-color: #ffffff10;
+	}
+}
+
+.toolbar > div:active {
+	background-color: #ffffff20;
+	transition: background-color 0.2s;
+}
+
+.toolbar > div > img {
+	height: 2.5rem;
+}
+
+.popup {
+	top: 50%;
+	left: 50%;
+	display: none;
+	position: absolute;
+	padding: 2em 4em 4em 4em;
+	background-color: #28252D;
+	transform: translate(-50%, -50%);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.popup > div {
+	font-size: 18px;
+	color: #74A6AD;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.popup > form {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.popup > form > input, .popup > form > button {
+	width: 25em;
+	border: none;
+	outline: none;
+	height: 2.7em;
+	font-size: 16px;
+	padding: 0.75em;
+	overflow: hidden;
+	color: #ffffff;
+	margin-top: 0.75em;
+	text-align: center;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-family: 'IBMPlexSans';
+	background-color: #003A42;
+}
+
+.popup > form > button {
+	cursor: pointer;
+}
+
+#submit {
+	cursor: pointer;
+	color: #ffffff;
+	background-color: #76A9FF;
+	transition: background-color 0.2s;
+}
+
+#submit:active {
+	background-color: #99beff;
+}
+
+#cancel {
+	padding: 0;
+	top: 1.5rem;
+	right: 1.5rem;
+	cursor: pointer;
+	position: absolute;
+}
+
+#cancel > img {
+	height: 1em;
+}
+
+.progress-bar {
+	background-color: #00000030;
+	height: 1.5em;
+	margin-top: 1em;
+}
+
+.progress-bar > div {
+	top: 0;
+	height: 100%;
+	position: relative;
+}
+
+.progress-bar > .progress {
+	width: 75%;
+	background-color: #ffffff15;
+}
+
+@media only screen and (max-width: 40em) {
+	.popup {
+		top: 0;
+		padding: 0;
+		width: 100%;
+		box-shadow: none;
+		height: calc(100% - 4.5rem);
+		background-color: #28252D;
+		transform: translate(-50%, 0);
+	}
+
+	.popup > div {
+		padding-top: 1em;
+	}
+
+	.popup > form > input, .popup > form > button {
+		width: calc(100% - 2em);
+	}
+
+}

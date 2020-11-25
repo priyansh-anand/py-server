@@ -1,0 +1,54 @@
+.head {
+    height: 3em;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    font-family: 'IBMPlexSans';
+    background-color: #00000030;
+}
+
+.head > div {
+    margin-left: 5em;
+    margin-right: 1em;
+}
+
+.head > #last {
+    text-align: left;
+}
+
+.content {
+    display: flex;
+    color: #74A6AD;
+    overflow-y: auto;
+    flex-direction: column;
+    max-height: calc(100% - 3em - 4.5em);
+}
+
+.file {
+	height: 100%;
+    padding: 5px;
+	display: flex;
+	font-size: 14px;
+	text-align: center;
+	align-items: center;
+	flex-direction: row;
+}
+
+.file > div {
+    margin: 0 0.5em;
+    overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.file > img {
+    width: 4em;
+    padding: 5px;
+}
+
+#last {
+    min-width: 5em;
+    max-width: 5em;
+    margin-left: auto;
+    text-align: right;
+}

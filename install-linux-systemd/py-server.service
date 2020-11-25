@@ -1,0 +1,13 @@
+[Unit]
+Description=Python HTTP Server to expose Filesystem to local-network
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/etc/py-server/py-server.sh
+
+[Install]
+WantedBy=multi-user.target

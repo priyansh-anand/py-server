@@ -1,0 +1,50 @@
+@font-face {
+	font-style: normal;
+	font-weight: normal;
+	font-family: 'IBMPlexSans';
+	src: url("/static/IBMPlexSans-Regular.ttf");
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+	font-family: 'IBMPlexSans';
+	background-color: #26262c;
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: #74A6AD;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main > div {
+    display: flex;
+}
+
+.main > div > img {
+    height: 1.5em;
+    margin-right: 1em;
+}
+
+.main > div > button {
+    height: 2em;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-top: 2em;
+    color: #74A6AD;
+    padding: 0em 2em;
+    width: fit-content;
+    font-family: 'IBMPlexSans';
+    background-color: #ffffff10;
+    transition: background-color 0.2s;
+}
+
+.main > div > button:hover {
+    background-color: #ffffff20;
+}

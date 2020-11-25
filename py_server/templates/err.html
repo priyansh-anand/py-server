@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>Error {{ err }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'styles/err.css') }}">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<body>
+    <div class="main">
+        <div>
+            <img src="{{ url_for('static', filename='icons/forbidden.svg') }}">
+            <div>
+                {{err_detail}}
+            </div>
+        </div>
+        <div>
+            <button onclick="location.href+='../'">Go back</button>
+        </div>
+    </div>
+</body>
+
+</html>

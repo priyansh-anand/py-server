@@ -1,0 +1,34 @@
+.content {
+	display: grid;
+	grid-gap: 10px;
+	overflow: auto;
+	color: #74A6AD;
+	max-height: calc(100% - 4.5rem);
+	grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+}
+
+.file {
+	height: 100%;
+	display: flex;
+	font-size: 14px;
+	text-align: center;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.file > div {
+	overflow: hidden;
+	white-space: nowrap;
+	padding-bottom: 10px;
+	text-overflow: ellipsis;
+}
+
+.file > img {
+	width: 50%;
+	padding-top: 10px;
+}
+
+.view1 {
+	display: none;
+}
